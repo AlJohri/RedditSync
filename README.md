@@ -12,6 +12,36 @@ Before running any scripts, run: `source .secret` to load the API key(s) as envi
 - **Get Newest Reddit Post**: `python -m redditblogger.reddit.get_newest_subreddit_post <subreddit1> <subreddit2>`
 - **Monitor Subreddit and Post to Blogger**: `python -m redditblogger.monitor_subreddit_and_create_blogposts <subreddit1> <subreddit2>`
 
+## Setup
+
+### Create a Google App from the Developers Console with Blogger API Enabled
+
+1. Login to https://console.developers.google.com
+2. Create a new application.
+3. Navigate to your application's dashboard.
+4. Click "Enable and manage APIs".
+5. Click on "Blogger API" under "Social APIs".
+6. Click "Enable API". You will now see: "This API is enabled, but you can't use it in your project until you create credentials."
+7. Click "Go to Credentials".
+8. Use the default option for "Which API are you using?" (Blogger API v3).
+9. For "Where will you be calling this API from?" choose "Web server".
+10. For "What data will you be accessing?" choose "User data".
+11. Click "What credentials do I need?"
+12. Give the OAuth 2.0 client ID a name ("Test Blog Coders Clan").
+13. Set the "Authorized JavaScript origins" to "http://localhost:8090".
+14. Set the "Authorized redirect URIs" to "http://localhost:8090/".
+15. Set the email address and the Product Name shown to users ("Test Blog Coders Clan").
+16. Feel free to set more customization options such as the hompage, logo, etc.
+17. Download the credential information in JSON format. Rename it to "credentials.json".
+18. Click Done.
+
+### Install Dependencies and Set Credentials
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Move `credentials.json` to root of repository.
+3. Create `.secret` file. `cp .secret.example .secret`.
+4. Fill in the `.secret` file with the Shorte API key.
+
 ## Sample Output
 
 ### List Blogs
@@ -66,31 +96,3 @@ Sleeping for 5 minutes...
 No new submissions found.
 Sleeping for 5 minutes...
 ```
-
-## Setup
-
-1. Install dependencies: `pip install -r requirements.txt`
-2. Move `credentials.json` to root of repository.
-3. Create `.secret` file. `cp .secret.example .secret`.
-4. Fill in the `.secret` file with the Shorte API key.
-
-### Create an Application on the Google Developers Console with Blogger API Enabled
-
-1. Login to https://console.developers.google.com
-2. Create a new application.
-3. Navigate to your application's dashboard.
-4. Click "Enable and manage APIs".
-5. Click on "Blogger API" under "Social APIs".
-6. Click "Enable API". You will now see: "This API is enabled, but you can't use it in your project until you create credentials."
-7. Click "Go to Credentials".
-8. Use the default option for "Which API are you using?" (Blogger API v3).
-9. For "Where will you be calling this API from?" choose "Web server".
-10. For "What data will you be accessing?" choose "User data".
-11. Click "What credentials do I need?"
-12. Give the OAuth 2.0 client ID a name ("Test Blog Coders Clan").
-13. Set the "Authorized JavaScript origins" to "http://localhost:8090".
-14. Set the "Authorized redirect URIs" to "http://localhost:8090/".
-15. Set the email address and the Product Name shown to users ("Test Blog Coders Clan").
-16. Feel free to set more customization options such as the hompage, logo, etc.
-17. Download the credential information in JSON format. Rename it to "credentials.json".
-18. Click Done.
