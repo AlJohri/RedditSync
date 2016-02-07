@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 import praw
 import argparse
 
+DEBUG = False
+
 r = praw.Reddit(user_agent='my_cool_application')
 
 def get_newest_subreddit_post(subreddit_name):
@@ -22,3 +24,5 @@ if __name__ == "__main__":
     for subreddit_name in args.subreddit_names:
         submission = get_newest_subreddit_post(subreddit_name)
         print(subreddit_name, "|", submission.id, "|", submission.author.name, "|", submission.title, "|", submission.url)
+        if DEBUG == True:
+            pp(submission.__dict__)

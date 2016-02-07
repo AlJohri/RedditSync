@@ -2,8 +2,11 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 from redditblogger import get_google_service
+from pprint import pprint as pp
 
-def main():
+DEBUG = False
+
+def get_blogs():
 
     user_id = "self"
 
@@ -14,8 +17,13 @@ def main():
     print("Blogs for User: %s" % user_id)
     print()
 
-    for blog in response.get('items', []):
-        print(blog['id'], blog['name'], blog['url'])
+    return response.get('items', [])
 
 if __name__ == "__main__":
-    main()
+    blogs = get_blogs()
+
+    for blog in blogs:
+        print(blog['id'], blog['name'], blog['url'])
+        if DEBUG == True:
+            pp(blog)
+            print()
