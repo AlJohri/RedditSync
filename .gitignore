@@ -1,3 +1,4 @@
+*.pyc
 last_subreddit_post_ids
 credentials.json
 credentials.dat
