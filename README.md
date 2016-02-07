@@ -8,9 +8,11 @@ Before running any scripts, run: `source .secret` to load the API key(s) as envi
 
 - **List Blogs**: `python -m redditblogger.blogger.list_blogs`
 - **List Posts**: `python -m redditblogger.blogger.list_posts <blog_id1> <blog_id2>`
-- **Shorten URL**: `python -m redditblogger.shorten_link <url1> <url2>`
+- **Create Sample Blog Post**: `python -m redditblogger.blogger.create_post`
+- **Delete Posts**: `python -m redditblogger.blogger.delete_all_posts <blog_id1> <blog_id2>`
 - **Get Newest Reddit Post**: `python -m redditblogger.reddit.get_newest_subreddit_post <subreddit1> <subreddit2>`
 - **Monitor Subreddit and Post to Blogger**: `python -m redditblogger.redditblogger.monitor_subreddits_and_create_blogposts <subreddit1> <subreddit2>`
+- **Shorten URL**: `python -m redditblogger.shorten_link <url1> <url2>`
 
 ## Setup
 

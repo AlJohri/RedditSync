@@ -2,6 +2,11 @@ from redditblogger import get_google_service
 from redditblogger.blogger.list_posts import get_posts
 import argparse
 
+def delete_all_posts(blog_id):
+    posts = get_posts(blog_id)
+    for post in posts:
+        delete_post(blog_id, post['id'])
+
 def delete_post(blog_id, post_id):
 
     service = get_google_service()
@@ -17,6 +22,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     for blog_id in args.blog_ids:
-        posts = get_posts(blog_id)
-        for post in posts:
-            delete_post(blog_id, post['id'])
+        delete_all_posts(blog_id)

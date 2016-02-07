@@ -1,11 +1,14 @@
 from redditblogger import get_google_service
+from redditblogger.shorten_link import shorten_link
 
 def create_post(blog_id, title, text="", url="", image_url=""):
 
+    shortened_url = shorten_link(url) if url else ""
+
+    url_html = "<a href='{shortened_url}'>{url}</a><br/>".format(url=url, shortened_url=shortened_url) if url else ""
     image_html = "<img style='width: 100%; height: auto;' src='{image_url}'></img><br/>".format(image_url=image_url) if image_url else ""
     text_html = "<p>" + text + "</p>" + "<br/>" if text else ""
-    url_html = "<a href='{url}'>Check it out!</a>".format(url=url) if url else ""
-    content = image_html + text_html + url_html
+    content = url_html + image_html + text_html
 
     body = {
         "blog": {
