@@ -33,6 +33,8 @@ if __name__ == "__main__":
 
     while True:
 
+        sys.stdout.flush()
+
         try:
 
             print()
@@ -63,11 +65,9 @@ if __name__ == "__main__":
                         text=submission.selftext_html if submission.selftext_html else ""
                     )
 
-            print("Sleeping for %d minutes..." % 5)
-            time.sleep(60*5)
+            print("Sleeping for %d seconds..." % 30)
+            time.sleep(30)
 
         except oauth2client.client.AccessTokenRefreshError:
             print('The credentials have been revoked or expired. Hopefully re-authorize by itself...?')
-
-        sys.stdout.flush()
 
