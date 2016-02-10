@@ -58,9 +58,9 @@ if __name__ == "__main__":
                     print("Writing submission [%s %s] to blog %s for subreddit %s" % (submission.id, submission.title.encode('utf-8'), blog_id, subreddit_name))
                     create_post(
                         blog_id=blog_id,
-                        title=submission.title.encode('utf-8'),
+                        title=submission.title,
                         url=submission.url,
-                        text=submission.selftext_html.encode('utf-8') if submission.selftext_html else ""
+                        text=submission.selftext_html if submission.selftext_html else ""
                     )
 
             print("Sleeping for %d minutes..." % 5)
