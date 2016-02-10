@@ -1,6 +1,6 @@
 from __future__ import print_function
 
-import os, csv, time, argparse
+import os, sys, csv, time, argparse
 from pprint import pprint as pp
 from collections import defaultdict
 
@@ -68,4 +68,6 @@ if __name__ == "__main__":
 
         except oauth2client.client.AccessTokenRefreshError:
             print('The credentials have been revoked or expired. Hopefully re-authorize by itself...?')
+
+        sys.stdout.flush()
 
