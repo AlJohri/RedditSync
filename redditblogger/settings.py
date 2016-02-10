@@ -1,7 +1,7 @@
 import os, json
 
 # https://shorte.st/tools/api
-SHORTE_API_KEY = os.getenv('SHORTE_API_KEY')
+SHORTE_API_KEY = os.getenv('SHORTE_API_KEY').strip()
 
 # get credentials from: https://console.developers.google.com/project/_/apiui/credential
 with open("credentials.json") as f:
