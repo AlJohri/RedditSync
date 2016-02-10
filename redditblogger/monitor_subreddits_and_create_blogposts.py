@@ -60,7 +60,7 @@ if __name__ == "__main__":
                         blog_id=blog_id,
                         title=submission.title.encode('utf-8'),
                         url=submission.url,
-                        text=submission.selftext_html.decode('utf-8') if submission.selftext_html else ""
+                        text=submission.selftext_html.encode('utf-8') if submission.selftext_html else ""
                     )
 
             print("Sleeping for %d minutes..." % 5)
