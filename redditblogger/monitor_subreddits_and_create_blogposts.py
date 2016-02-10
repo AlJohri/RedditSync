@@ -9,6 +9,8 @@ from redditblogger.reddit import get_last_recorded_submission_id, write_last_rec
 from redditblogger.blogger.create_post import create_post
 from redditblogger.utils import mkdir_p
 
+import oauth2client
+
 if __name__ == "__main__":
 
     adjacency_list = {}
@@ -31,37 +33,39 @@ if __name__ == "__main__":
 
     while True:
 
-        print()
-        print("-------------------------------------")
+        try:
 
-        new_submissions = []
+            print()
+            print("-------------------------------------")
 
-        for subreddit_name in unique_subreddit_names:
-            last_submission_id = get_last_recorded_submission_id(folder, subreddit_name)
-            submission = get_newest_subreddit_post(subreddit_name)
+            new_submissions = []
 
-            if submission.id != last_submission_id:
-                print("Found new Submission: ", submission.id, submission.title)
-                new_submissions.append(submission)
-                write_last_recorded_submission_id(folder, subreddit_name, submission.id)
+            for subreddit_name in unique_subreddit_names:
+                last_submission_id = get_last_recorded_submission_id(folder, subreddit_name)
+                submission = get_newest_subreddit_post(subreddit_name)
 
-        if len(new_submissions) == 0:
-            print("No new submissions found.")
+                if submission.id != last_submission_id:
+                    print("Found new Submission: ", submission.id, submission.title.encode('utf-8'))
+                    new_submissions.append(submission)
+                    write_last_recorded_submission_id(folder, subreddit_name, submission.id)
 
-        for submission in new_submissions:
-            subreddit_name = submission.subreddit.display_name
-            for blog_id in reversed_adjacency_list[subreddit_name]:
-                print("Writing submission [%s %s] to blog %s for subreddit %s" % (submission.id, submission.title, blog_id, subreddit_name))
-                create_post(
-                    blog_id=blog_id,
-                    title=submission.title,
-                    url=submission.url,
-                    text=submission.selftext_html
-                )
+            if len(new_submissions) == 0:
+                print("No new submissions found.")
 
-        print("Sleeping for %d minutes..." % 5)
-        time.sleep(60*5)
+            for submission in new_submissions:
+                subreddit_name = submission.subreddit.display_name
+                for blog_id in reversed_adjacency_list[subreddit_name]:
+                    print("Writing submission [%s %s] to blog %s for subreddit %s" % (submission.id, submission.title.encode('utf-8'), blog_id, subreddit_name))
+                    create_post(
+                        blog_id=blog_id,
+                        title=submission.title.encode('utf-8'),
+                        url=submission.url,
+                        text=submission.selftext_html
+                    )
 
-    # try:
-    # except oauth2client.client.AccessTokenRefreshError:
-    #     print('The credentials have been revoked or expired, please re-run the application to re-authorize')
+            print("Sleeping for %d minutes..." % 5)
+            time.sleep(60*5)
+
+        except oauth2client.client.AccessTokenRefreshError:
+            print('The credentials have been revoked or expired. Hopefully re-authorize by itself...?')
+

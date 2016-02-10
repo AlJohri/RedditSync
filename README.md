@@ -30,8 +30,8 @@ Before running any scripts, run: `source .secret` to load the API key(s) as envi
 10. For "What data will you be accessing?" choose "User data".
 11. Click "What credentials do I need?"
 12. Give the OAuth 2.0 client ID a name ("Test Blog Coders Clan").
-13. Set the "Authorized JavaScript origins" to "http://localhost:8090".
-14. Set the "Authorized redirect URIs" to "http://localhost:8090/".
+13. Set the "Authorized JavaScript origins" to "http://localhost:8080".
+14. Set the "Authorized redirect URIs" to "http://localhost:8080/".
 15. Set the email address and the Product Name shown to users ("Test Blog Coders Clan").
 16. Feel free to set more customization options such as the hompage, logo, etc.
 17. Download the credential information in JSON format. Rename it to "credentials.json".
