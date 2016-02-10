@@ -45,7 +45,7 @@ if __name__ == "__main__":
                 submission = get_newest_subreddit_post(subreddit_name)
 
                 if submission.id != last_submission_id:
-                    print("Found new Submission: ", submission.id, submission.title.decode('utf-8'))
+                    print("Found new Submission: ", submission.id, submission.title.encode('utf-8'))
                     new_submissions.append(submission)
                     write_last_recorded_submission_id(folder, subreddit_name, submission.id)
 
@@ -55,10 +55,10 @@ if __name__ == "__main__":
             for submission in new_submissions:
                 subreddit_name = submission.subreddit.display_name
                 for blog_id in reversed_adjacency_list[subreddit_name]:
-                    print("Writing submission [%s %s] to blog %s for subreddit %s" % (submission.id, submission.title.decode('utf-8'), blog_id, subreddit_name))
+                    print("Writing submission [%s %s] to blog %s for subreddit %s" % (submission.id, submission.title.encode('utf-8'), blog_id, subreddit_name))
                     create_post(
                         blog_id=blog_id,
-                        title=submission.title.decode('utf-8'),
+                        title=submission.title.encode('utf-8'),
                         url=submission.url,
                         text=submission.selftext_html.decode('utf-8')
                     )
