@@ -16,6 +16,14 @@ Before running any scripts, run: `source .secret` to load the API key(s) as envi
 
 ## Setup
 
+### Provision Server
+
+After sshing into the server:
+
+```
+curl https://raw.githubusercontent.com/AlJohri/RedditBlogger/master/provision.sh | bash
+```
+
 ### Create a Google App from the Developers Console with Blogger API Enabled
 
 1. Login to https://console.developers.google.com
