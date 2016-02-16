@@ -18,6 +18,18 @@ Before running any scripts, run: `source .secret` to load the API key(s) as envi
 
 ### Provision Server
 
+Enable passwordless authentication to remote server.
+
+```
+ssh-copy-id root@li1022-36.members.linode.com
+````
+
+SSH Into Server
+
+```
+ssh root@li1022-36.members.linode.com
+```
+
 After sshing into the server:
 
 ```
