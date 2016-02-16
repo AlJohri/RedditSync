@@ -1,6 +1,9 @@
 from redditblogger import get_google_service
 from redditblogger.shorten_link import shorten_link
 
+import sys, logging
+from oauth2client.client import HttpAccessTokenRefreshError
+
 def create_post(blog_id, title, text="", url="", image_url=""):
 
     shortened_url = shorten_link(url) if url else ""
@@ -24,7 +27,12 @@ def create_post(blog_id, title, text="", url="", image_url=""):
 
     service = get_google_service()
     request = service.posts().insert(blogId=blog_id, body=body, isDraft=False, fetchImages=True, fetchBody=True)
-    response = request.execute()
+
+    try:
+        response = request.execute()
+    except HttpAccessTokenRefreshError as err:
+        logging.error(str(err))
+        sys.exit()
 
 if __name__ == "__main__":
     create_post(

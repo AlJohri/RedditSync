@@ -2,6 +2,9 @@ from redditblogger import get_google_service
 from redditblogger.blogger.list_posts import get_posts
 import argparse
 
+import sys, logging
+from oauth2client.client import HttpAccessTokenRefreshError
+
 def delete_all_posts(blog_id):
     posts = get_posts(blog_id)
     for post in posts:
@@ -11,7 +14,12 @@ def delete_post(blog_id, post_id):
 
     service = get_google_service()
     request = service.posts().delete(blogId=blog_id, postId=post_id)
-    response = request.execute()
+
+    try:
+        response = request.execute()
+    except HttpAccessTokenRefreshError as err:
+        logging.error(str(err))
+        sys.exit()
 
 if __name__ == "__main__":
 

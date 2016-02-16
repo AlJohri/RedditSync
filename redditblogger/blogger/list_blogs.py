@@ -4,6 +4,9 @@ from __future__ import unicode_literals
 from redditblogger import get_google_service
 from pprint import pprint as pp
 
+import sys, logging
+from oauth2client.client import HttpAccessTokenRefreshError
+
 DEBUG = False
 
 def get_blogs():
@@ -12,7 +15,12 @@ def get_blogs():
 
     service = get_google_service()
     request = service.blogs().listByUser(userId=user_id)
-    response = request.execute()
+
+    try:
+        response = request.execute()
+    except HttpAccessTokenRefreshError as err:
+        logging.error(str(err))
+        sys.exit()
 
     print("Blogs for User: %s" % user_id)
     print()

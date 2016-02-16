@@ -5,6 +5,9 @@ from pprint import pprint as pp
 
 from redditblogger import get_google_service
 
+import sys, logging
+from oauth2client.client import HttpAccessTokenRefreshError
+
 def get_posts(blog_id):
 
     service = get_google_service()
@@ -13,7 +16,13 @@ def get_posts(blog_id):
 
     request = service.posts().list(blogId=blog_id)
     while request is not None:
-        response = request.execute()
+
+        try:
+            response = request.execute()
+        except HttpAccessTokenRefreshError as err:
+            logging.error(str(err))
+            sys.exit()
+
         posts += response.get('items', [])
         request = service.posts().list_next(request, response)
 
@@ -41,7 +50,6 @@ def main():
             if DEBUG == True:
                 pp(post)
                 print()
-
 
 if __name__ == "__main__":
     main()
