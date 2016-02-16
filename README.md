@@ -22,7 +22,7 @@ Enable passwordless authentication to remote server.
 
 ```
 ssh-copy-id root@li1022-36.members.linode.com
-````
+```
 
 SSH Into Server
 
@@ -34,6 +34,14 @@ After sshing into the server:
 
 ```
 curl https://raw.githubusercontent.com/AlJohri/RedditBlogger/master/provision.sh | bash
+```
+
+Push credentials to server:
+
+```
+scp .secret root@li1022-36.members.linode.com:RedditBlogger/
+scp credentials.dat root@li1022-36.members.linode.com:RedditBlogger/
+scp credentials.json root@li1022-36.members.linode.com:RedditBlogger/
 ```
 
 ### Create a Google App from the Developers Console with Blogger API Enabled
