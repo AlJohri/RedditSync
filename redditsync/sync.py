@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     unique_subreddit_names, reversed_adjacency_list = parse_input()
 
-    print("Found %d unique subreddits in input.csv.")
+    print("Found %d unique subreddits in input.csv." % len(unique_subreddit_names))
     print("Monitoring: %s" % unique_subreddit_names)
     print()
 
