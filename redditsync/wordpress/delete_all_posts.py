@@ -1,0 +1,1 @@
+# https://developer.wordpress.com/docs/api/1.1/post/sites/%24site/posts/%24post_ID/delete/

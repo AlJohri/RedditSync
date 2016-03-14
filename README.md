@@ -16,6 +16,7 @@ Before running any scripts, run: `source .secret` to load the API key(s) as envi
 ### Wordpress
 
 - **List Posts**: `python -m redditsync.wordpress.list_posts`
+- **Create Sample Blog Post**: `python -m redditsync.wordpress.create_post`
 
 ### Reddit
 
@@ -27,23 +28,27 @@ Before running any scripts, run: `source .secret` to load the API key(s) as envi
 
 ### Main
 
-- **Monitor Subreddit and Post to Blogger**: `python -m redditsync.sync_to_blogger`
-- **Monitor Subreddit and Post to Wordpress**: `python -m redditsync.sync_to_wordpress`
+- **Monitor Subreddit and Post to Blogger and/or Wordpress**: `python -m redditsync.sync`
 
 ## Setup
 
 ### Provision Server
 
+```
+export MYSERVER="104.236.115.219" # DigitalOcean
+# export MYSERVER="li1022-36.members.linode.com" # Linode
+```
+
 Enable passwordless authentication to remote server.
 
 ```
-ssh-copy-id root@li1022-36.members.linode.com
+ssh-copy-id root@$MYSERVER
 ```
 
 SSH Into Server
 
 ```
-ssh root@li1022-36.members.linode.com
+ssh root@$MYSERVER
 ```
 
 After sshing into the server:
@@ -55,9 +60,9 @@ curl https://raw.githubusercontent.com/AlJohri/RedditSync/master/provision.sh | 
 Push credentials to server:
 
 ```
-scp .secret root@li1022-36.members.linode.com:RedditSync/
-scp credentials.dat root@li1022-36.members.linode.com:RedditSync/
-scp credentials.json root@li1022-36.members.linode.com:RedditSync/
+scp .secret root@$MYSERVER:RedditSync/
+scp credentials.dat root@$MYSERVER:RedditSync/
+scp credentials.json root@$MYSERVER:RedditSync/
 ```
 
 ### Create a Google App from the Developers Console with Blogger API Enabled

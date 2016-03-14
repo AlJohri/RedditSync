@@ -1,4 +1,7 @@
-from wordpress_xmlrpc import Client
-from redditsync.settings import WP_USERNAME, WP_PASSWORD
+from redditsync.wordpress.create_post import create_post
+from redditsync.wordpress.list_posts import get_posts
 
-wp = Client('http://bitlunches.org/test/xmlrpc.php', WP_USERNAME, WP_PASSWORD)
+from wordpress_xmlrpc import Client
+from redditsync.settings import WP_SERVER, WP_USERNAME, WP_PASSWORD
+
+wp = Client(WP_SERVER, WP_USERNAME, WP_PASSWORD)

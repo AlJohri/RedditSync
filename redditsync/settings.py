@@ -2,6 +2,7 @@ import os, json
 
 ENVIRONMENT_VARIABLES = [
     'SHORTE_API_KEY',
+    'WP_SERVER',
     'WP_USERNAME',
     'WP_PASSWORD'
 ]
@@ -12,6 +13,7 @@ for var in ENVIRONMENT_VARIABLES:
 
 # https://shorte.st/tools/api
 SHORTE_API_KEY = os.getenv('SHORTE_API_KEY').strip()
+WP_SERVER = os.getenv('WP_SERVER').strip()
 WP_USERNAME = os.getenv('WP_USERNAME').strip()
 WP_PASSWORD = os.getenv('WP_PASSWORD').strip()
 
@@ -26,6 +28,7 @@ GOOGLE_SCOPE = 'https://www.googleapis.com/auth/blogger'
 
 __all__ = [
     SHORTE_API_KEY,
+    WP_SERVER,
     WP_USERNAME,
     WP_PASSWORD,
     GOOGLE_CLIENT_ID,

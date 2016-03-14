@@ -1,3 +1,5 @@
+from redditsync.reddit.get_newest_subreddit_post import get_newest_subreddit_post
+
 def get_last_recorded_submission_id(folder, subreddit_name):
     try:
         with open(folder + "/" + subreddit_name + ".txt", "r") as f:

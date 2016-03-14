@@ -1,13 +1,10 @@
 from __future__ import print_function
 
-from redditsync.wordpress import wp
-
-from wordpress_xmlrpc import WordPressPost
-from wordpress_xmlrpc.methods.posts import GetPosts, NewPost
-from wordpress_xmlrpc.methods.users import GetUserInfo
+import redditsync.wordpress
+from wordpress_xmlrpc.methods.posts import GetPosts
 
 def get_posts():
-    return wp.call(GetPosts())
+    return redditsync.wordpress.wp.call(GetPosts())
 
 def main():
 

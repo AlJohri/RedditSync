@@ -29,6 +29,9 @@ logger = logging.getLogger() # global
 logger.setLevel(logging.DEBUG)
 logger.addHandler(handler)
 
+urllib3_logged = logging.getLogger('requests.packages.urllib3.connectionpool')
+urllib3_logged.setLevel(logging.WARN)
+
 #####################################
 
 from redditsync.settings import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_SCOPE
@@ -57,3 +60,5 @@ def get_google_service():
     service = apiclient.discovery.build('blogger', 'v3', http=http)
 
     return service
+
+#####################################
