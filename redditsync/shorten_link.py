@@ -1,7 +1,7 @@
 from __future__ import print_function
 from __future__ import unicode_literals
 
-from redditblogger.settings import SHORTE_API_KEY
+from redditsync.settings import SHORTE_API_KEY
 
 import requests
 import argparse

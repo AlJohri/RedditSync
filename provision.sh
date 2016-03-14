@@ -8,7 +8,7 @@ cd Python-3.5.1
 make
 sudo make install
 cd ~
-git clone https://github.com/AlJohri/RedditBlogger.git
-cd RedditBlogger
+git clone https://github.com/AlJohri/RedditSync.git
+cd RedditSync
 pip3.5 install --upgrade pip
 pip3.5 install -r requirements.txt

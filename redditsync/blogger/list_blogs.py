@@ -1,7 +1,7 @@
 from __future__ import print_function
 from __future__ import unicode_literals
 
-from redditblogger import get_google_service
+from redditsync import get_google_service
 from pprint import pprint as pp
 
 import sys, logging

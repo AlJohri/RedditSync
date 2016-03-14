@@ -1,5 +1,5 @@
-from redditblogger import get_google_service
-from redditblogger.shorten_link import shorten_link
+from redditsync import get_google_service
+from redditsync.shorten_link import shorten_link
 
 import sys, logging
 from oauth2client.client import HttpAccessTokenRefreshError

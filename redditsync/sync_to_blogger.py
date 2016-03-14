@@ -4,10 +4,10 @@ import os, sys, csv, time, argparse
 from pprint import pprint as pp
 from collections import defaultdict
 
-from redditblogger.reddit.get_newest_subreddit_post import get_newest_subreddit_post
-from redditblogger.reddit import get_last_recorded_submission_id, write_last_recorded_submission_id
-from redditblogger.blogger.create_post import create_post
-from redditblogger.utils import mkdir_p
+from redditsync.reddit.get_newest_subreddit_post import get_newest_subreddit_post
+from redditsync.reddit import get_last_recorded_submission_id, write_last_recorded_submission_id
+from redditsync.blogger.create_post import create_post
+from redditsync.utils import mkdir_p
 
 import oauth2client
 

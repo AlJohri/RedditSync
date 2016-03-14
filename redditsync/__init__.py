@@ -31,7 +31,7 @@ logger.addHandler(handler)
 
 #####################################
 
-from redditblogger.settings import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_SCOPE
+from redditsync.settings import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_SCOPE
 
 flow = oauth2client.client.OAuth2WebServerFlow(
     client_id=GOOGLE_CLIENT_ID,

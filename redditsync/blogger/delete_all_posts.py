@@ -1,5 +1,5 @@
-from redditblogger import get_google_service
-from redditblogger.blogger.list_posts import get_posts
+from redditsync import get_google_service
+from redditsync.blogger.list_posts import get_posts
 import argparse
 
 import sys, logging

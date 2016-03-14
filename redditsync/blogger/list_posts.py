@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import argparse
 from pprint import pprint as pp
 
-from redditblogger import get_google_service
+from redditsync import get_google_service
 
 import sys, logging
 from oauth2client.client import HttpAccessTokenRefreshError
